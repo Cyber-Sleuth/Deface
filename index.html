@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Alert - Ethical Hacking</title>
+    <style>
+        /* Global reset and font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: black;
+            color: #00ff00;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Background noise effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: -1;
+            animation: noise 5s infinite alternate;
+        }
+
+        @keyframes noise {
+            0% {
+                background: rgba(0, 0, 0, 0.8);
+            }
+            50% {
+                background: rgba(0, 255, 0, 0.3);
+            }
+            100% {
+                background: rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* Glitchy title styling */
+        .glitch-title {
+            font-size: 5rem;
+            position: relative;
+            color: #00ff00;
+            text-transform: uppercase;
+            animation: glitch 3s infinite;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00, 0 0 30px #ff0000;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0 0 10px #ff0000, 0 0 5px #00ff00; }
+            25% { text-shadow: 2px 2px 0 #ff0000; }
+            50% { text-shadow: -2px -2px 0 #00ff00; }
+            75% { text-shadow: 2px -2px 0 #ff0000; }
+            100% { text-shadow: 0 0 10px #ff0000, 0 0 5px #00ff00; }
+        }
+
+        /* Information box styling */
+        .info-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Terminal-like text styling */
+        .terminal {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-top: 20px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cursor styling */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Matrix background effect */
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .matrix div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            color: rgba(0, 255, 0, 0.1);
+            animation: matrixFall 10s infinite linear;
+            white-space: nowrap;
+            font-size: 16px;
+            opacity: 0;
+        }
+
+        @keyframes matrixFall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            padding: 20px;
+            color: #00ff00;
+            z-index: 10;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        .modal h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal button {
+            background: #00ff00;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal button:hover {
+            background: #00cc00;
+        }
+
+        /* Image styling */
+        .emblem {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Emblem of India -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="emblem">
+    
+    <h1 class="glitch-title">Security Alert!</h1>
+
+    <div class="info-box">
+        <h2>Warning!</h2>
+        <p>Your system has been accessed without permission. As an ethical hacker, I advise you to:</p>
+        <ul>
+            <li>Change your passwords immediately.</li>
+            <li>Check your security settings.</li>
+            <li>Stay informed about potential vulnerabilities.</li>
+        </ul>
+        <p>I can't do anything. Don't worry; This is just to inform you about the impact and not to engage in any malicious activity.</p>
+    </div>
+
+    <div class="terminal">
+        <p id="terminal-text"></p>
+        <div class="cursor"></div>
+    </div>
+
+    <!-- Matrix Effect -->
+    <div class="matrix">
+        <!-- Random characters for the matrix effect -->
+    </div>
+
+    <!-- Warning Modal -->
+    <div class="modal" id="warningModal">
+        <h2>Important Security Notice</h2>
+        <p>Your system security is at risk! Please ensure you take necessary actions to secure your system.</p>
+        <button onclick="closeModal()">Got it!</button>
+    </div>
+
+    <script>
+        // Create the matrix effect columns with random characters
+        const matrixContainer = document.querySelector('.matrix');
+        const matrixColumns = 100; // Number of matrix lines
+        const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+        for (let i = 0; i < matrixColumns; i++) {
+            const div = document.createElement('div');
+            div.style.left = `${i * 2}%`;
+            div.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
+            div.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            matrixContainer.appendChild(div);
+        }
+
+        // Terminal text effect (Typing simulation)
+        const terminalText = document.getElementById("terminal-text");
+        const commands = [
+            "root@system:~$ Security breach detected!",
+            "root@system:~$ Analyzing intrusion...",
+            "root@system:~$ Please secure your system!",
+            "root@system:~$ Remember to report any suspicious activity."
+        ];
+        let commandIndex = 0;
+
+        function typeCommand(command) {
+            let charIndex = 0;
+
+            function typeChar() {
+                if (charIndex < command.length) {
+                    terminalText.innerHTML += command.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, Math.random() * 100 + 50); // Random typing speed
+                } else {
+                    setTimeout(clearTerminal, 1500); // Delay before clearing
+                }
+            }
+
+            typeChar();
+        }
+
+        function clearTerminal() {
+            terminalText.innerHTML = ''; // Clear the terminal
+            if (commandIndex < commands.length) {
+                typeCommand(commands[commandIndex]);
+                commandIndex++;
+            }
+        }
+
+        // Start the typing effect with the first command
+        typeCommand(commands[commandIndex]);
+        commandIndex++;
+
+        // Show modal on page load
+        window.onload = function() {
+            document.getElementById('warningModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('warningModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
